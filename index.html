@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Formulario</title>
+</head>
+<body>
+    <section class="form-register">
+        <h4>Formulario</h4>
+        <input class="controls" type="text" name="nombres" id="nombres" placeholder="ingrese su nombre">
+        <input class="controls" type="text" name="apellido" id="apellido" placeholder="ingrese su apellido">
+        <input class="controls" type="text" name="dni" id="dni" placeholder="ingrese su DNI">
+        <input class="controls" type="text" name="domicilio" id="domicilio" placeholder="ingrese su domicilio">
+        <input class="controls" type="text" name="celular" id="celular" placeholder="ingrese su número de celular">
+        <input class="controls" type="email" name="correo" id="correo" placeholder="ingrese su correo">
+        <input class="botons" type="submit" value="Registrar">
+
+    </section>
+
+    <script>
+    inputs = document.querySelectorAll('input'); 
+
+    expresiones = { 
+        nombres: /^[a-zA-Z]{0,}$/, 
+        apellido: /^[a-zA-Z]{0,}$/,
+        dni: /^[0-9]{8,12}$/ ,
+        domicilio: /^[a-zA-Z0-9-\s]{0,}$/,
+        correo: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+        celular: /^[0-9]{11,12}$/ 
+    };
+
+    const validar = (e) => { 
+        //console.log("Validando");
+        switch (e.target.id) { 
+            case "nombres": 
+                console.log("Validando nombres");
+               
+                if(expresiones.nombres.test(e.target.value)){ 
+                   
+                    document.getElementById('nombres').classList.add('form_correcto');
+                    document.getElementById('nombres').classList.remove('form_error');
+                } else {
+                    document.getElementById('nombres').classList.add('form_error');
+                    document.getElementById('nombres').classList.remove('form_correcto');
+                }
+                break;
+                case "apellido": 
+                console.log("Validando apellido");
+               
+                if(expresiones.apellido.test(e.target.value)){ 
+                   
+                    document.getElementById('apellido').classList.add('form_correcto');
+                    document.getElementById('apellido').classList.remove('form_error');
+                } else {
+                    document.getElementById('apellido').classList.add('form_error');
+                    document.getElementById('apellido').classList.remove('form_correcto');
+                }
+                break;
+                case "dni":
+                console.log("Validando dni");
+                if(expresiones.dni.test(e.target.value)){
+                    document.getElementById('dni').classList.add('form_correcto');
+                    document.getElementById('dni').classList.remove('form_error');
+                } else {
+                    document.getElementById('dni').classList.add('form_error');
+                    document.getElementById('dni').classList.remove('form_correcto');
+                }
+                break;
+                case "domicilio": 
+                console.log("Validando domicilio");
+               
+                if(expresiones.domicilio.test(e.target.value)){ 
+                   
+                    document.getElementById('domicilio').classList.add('form_correcto');
+                    document.getElementById('domicilio').classList.remove('form_error');
+                } else {
+                    document.getElementById('domicilio').classList.add('form_error');
+                    document.getElementById('domicilio').classList.remove('form_correcto');
+                }
+                break;
+                case "correo": 
+                console.log("Validando nombre");
+               
+                if(expresiones.correo.test(e.target.value)){ 
+                   
+                    document.getElementById('correo').classList.add('form_correcto');
+                    document.getElementById('correo').classList.remove('form_error');
+                } else {
+                    document.getElementById('correo').classList.add('form_error');
+                    document.getElementById('correo').classList.remove('form_correcto');
+                }
+                break;
+            case "celular":
+                console.log("Validando Alumno");
+                if(expresiones.celular.test(e.target.value)){
+                    document.getElementById('celular').classList.add('form_correcto');
+                    document.getElementById('celular').classList.remove('form_error');
+                } else {
+                    document.getElementById('celular').classList.add('form_error');
+                    document.getElementById('celular').classList.remove('form_correcto');
+                }
+                break;
+        }
+    }
+    
+    
+    inputs.forEach((input) => {
+        input.addEventListener('keyup',validar);
+    });
+
+</script>
+
+</body>
+</html>
